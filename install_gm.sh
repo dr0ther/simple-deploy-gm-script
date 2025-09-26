@@ -6,17 +6,7 @@ adduser --quiet --disabled-password --shell /bin/bash --home /home/bitcoin --gec
 apt update
 apt install -y libevent-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-thread-dev libsqlite3-dev libzmq3-dev jq rsync sshpass
 
-sshpass –p Sup3rSecretB1tcoinpw ssh-copy-id bitcoin@165.227.217.103
-
-sshpass –p Sup3rSecretB1tcoinpw ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no bitcoin@165.227.217.103
-sshpass –p Sup3rSecretB1tcoinpw ssh-copy-id bitcoin@165.227.217.103
-
-sshpass –f passwd_file ssh-copy-id bitcoin@165.227.217.103
-
-echo "Sup3rSecretB1tcoinpw" > passwd_file
-
- sshpass –f passwd_file ssh-copy-id bitcoin@165.227.217.103
-
+ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y
 
  echo "|1|9pKWdVq+hbPO6fOuNbtrHnK7384=|/a9mtZDIKn+FuSiXe3ElNnFB26M= ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBU55d1Jsii2W7W/vYzXEfT84l0PS7clwoKGwaa/t8BW
 |1|wTFNkSi0UvjDoOfiuN1TrQ+hbBI=|TS0eCNnhfOQIm1+DKxAJHNITWrk= ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmC1Y2GaA/OPWZdf+Ryxj5m/paNj/8hxDJEHC9OpMTU2RdZr/h4grsejsAdI+sSFhVNbvP65b9fOyVvASGEbrZpLRrF1hCCPBI2xL7IHLz7iQlmix0CP4a9fdXINOcAdg2VazkB+MO9mkS66k0SmRW0e+tEP9jK20e5UwqlpQPibqO4aRc03pFq6P4f163ijaofa131DxvWkIUEboTsmap8a13Z1DN6wgQlCVWlNoHVA6KHvz1YvZfvJEyjDxStBIp3nWWyJ3yYXCqxt3i01X27JKrVZ2Liz2ujkK27Q6nYMXp3Q95UDaQRv4ZjVW8+70l5LoLNFqjHF9vOzq/TKwcp4qz5c73F9VYuGsevvDrovvUa+9ZKc2GPdZefqRmazjtP3TbzZrMSVRuKnqFuNmVB5VmX0PcuUdxf649UEb/KCHEPKF+mPO1+1g83Berl1PtQACz9EpZSFCJtIw6Px87/WtSZ63juOmNukpy8eCZgGQSNo7yfHBFBkJX9Zjz+IM=
