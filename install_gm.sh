@@ -1,5 +1,5 @@
 # quietly add a user without password
-adduser --quiet --disabled-password --shell /bin/bash --home /home/newuser --gecos "User" bitcoin
+adduser --quiet --disabled-password --shell /bin/bash --home /home/bitcoin --gecos "User" bitcoin
 
 # set password
 echo "bitcoin:Sup3rSecretB1tcoinpw" | chpasswd
