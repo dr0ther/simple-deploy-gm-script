@@ -4,7 +4,8 @@ adduser --quiet --disabled-password --shell /bin/bash --home /home/newuser --gec
 # set password
 echo "bitcoin:Sup3rSecretB1tcoinpw" | chpasswd
 
-
+apt update
+apt install -y libevent-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-thread-dev libsqlite3-dev libzmq3-dev jq rsync sshpass
 
 sshpass –p Sup3rSecretB1tcoinpw ssh-copy-id bitcoin@165.227.217.103
 
