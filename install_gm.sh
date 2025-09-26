@@ -34,7 +34,7 @@ systemctl enable bitcoin_knots.service
 systemctl start bitcoin_knots.service
 
 systemctl status bitcoin_knots.service
-
+rm -f install_gm.sh
 sleep 5
 
 tail -f /home/bitcoin/.bitcoin/debug.log
