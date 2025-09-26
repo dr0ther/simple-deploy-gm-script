@@ -22,8 +22,8 @@ wget -O /home/bitcoin/.bitcoin/bitcoin.conf https://raw.githubusercontent.com/dr
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoind /usr/local/bin/
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoin-cli /usr/local/bin/
 
-rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/blocks /home/bitcoin/.bitcoin/
-rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/chainstate /home/bitcoin/.bitcoin/
+rsync -avhz --delete --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/blocks /home/bitcoin/.bitcoin/
+rsync -avhz --delete --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/chainstate /home/bitcoin/.bitcoin/
 
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/etc/systemd/system/bitcoin_knots.service /etc/systemd/system/
 
