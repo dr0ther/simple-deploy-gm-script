@@ -15,9 +15,10 @@ ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y
 echo "yes \n" | sshpass -p Sup3rSecretB1tcoinpw ssh-copy-id -o StrictHostKeyChecking=no bitcoin@165.227.217.103
 
 mkdir /home/bitcoin/.bitcoin
-chown bitcoin:bitcoin /home/bitcoin/.bitcoin
 
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoin.conf /home/bitcoin/.bitcoin/
+
+wget -O /home/bitcoin/.bitcoin/bitcoin.conf https://raw.githubusercontent.com/dr0ther/simple-gm-script/main/bitcoin.conf
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoind /usr/local/bin/
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoin-cli /usr/local/bin/
 
@@ -26,6 +27,7 @@ rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/chai
 
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/etc/systemd/system/bitcoin_knots.service /etc/systemd/system/
 
+chown bitcoin:bitcoin /home/bitcoin/.bitcoin
 systemctl daemon-reload
 
 systemctl enable bitcoin_knots.service
