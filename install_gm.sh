@@ -24,8 +24,34 @@ wget -O /home/bitcoin/.bitcoin/bitcoin.conf https://raw.githubusercontent.com/dr
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoind /usr/local/bin/
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoin-cli /usr/local/bin/
 
+
+touch request_stop_bitcoind.txt
+rsync -avhz --info=progress2 /root/request_stop_bitcoind.txt bitcoin@165.227.217.103:/home/bitcoin/services
+rm -rf request_stop_bitcoind.txt
+
+file=/root/stopped_bitcoind.txt
+
+stuckinloop=1
+
+while [ $stuckinloop == 1 ]; do
+rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/services/stopped_bitcoind.txt /root
+if [ -f "$file" ]; then
+    echo "$file exists."
+    stuckinloop=0
+fi
+sleep 1
+done
+
+rm -rf $file
+
 rsync -avhz --delete --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/blocks /home/bitcoin/.bitcoin/
 rsync -avhz --delete --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/chainstate /home/bitcoin/.bitcoin/
+
+touch request_start_bitcoind.txt
+rsync -avhz --info=progress2 /root/request_start_bitcoind.txt bitcoin@165.227.217.103:~/services
+rm -rf request_start_bitcoind.txt
+
+
 
 rsync -avhz --info=progress2 bitcoin@165.227.217.103:/etc/systemd/system/bitcoin_knots.service /etc/systemd/system/
 
