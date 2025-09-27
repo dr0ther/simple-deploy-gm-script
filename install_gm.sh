@@ -48,7 +48,7 @@ rsync -avhz --delete --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bit
 rsync -avhz --delete --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/chainstate /home/bitcoin/.bitcoin/
 
 touch request_start_bitcoind.txt
-rsync -avhz --info=progress2 /root/request_start_bitcoind.txt bitcoin@165.227.217.103:~/services
+rsync -avhz --info=progress2 /home/bitcoin/services/request_start_bitcoind.txt bitcoin@165.227.217.103:~/services
 rm -rf request_start_bitcoind.txt
 
 
