@@ -14,7 +14,7 @@ ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y
 |1|wTFNkSi0UvjDoOfiuN1TrQ+hbBI=|TS0eCNnhfOQIm1+DKxAJHNITWrk= ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmC1Y2GaA/OPWZdf+Ryxj5m/paNj/8hxDJEHC9OpMTU2RdZr/h4grsejsAdI+sSFhVNbvP65b9fOyVvASGEbrZpLRrF1hCCPBI2xL7IHLz7iQlmix0CP4a9fdXINOcAdg2VazkB+MO9mkS66k0SmRW0e+tEP9jK20e5UwqlpQPibqO4aRc03pFq6P4f163ijaofa131DxvWkIUEboTsmap8a13Z1DN6wgQlCVWlNoHVA6KHvz1YvZfvJEyjDxStBIp3nWWyJ3yYXCqxt3i01X27JKrVZ2Liz2ujkK27Q6nYMXp3Q95UDaQRv4ZjVW8+70l5LoLNFqjHF9vOzq/TKwcp4qz5c73F9VYuGsevvDrovvUa+9ZKc2GPdZefqRmazjtP3TbzZrMSVRuKnqFuNmVB5VmX0PcuUdxf649UEb/KCHEPKF+mPO1+1g83Berl1PtQACz9EpZSFCJtIw6Px87/WtSZ63juOmNukpy8eCZgGQSNo7yfHBFBkJX9Zjz+IM=
 |1|1OEoQ49lv+R5SReurhXeTB+v1Rc=|/IJwShROCggNmMo3wb9Kk93MAoI= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBSASJbRoc2fOHE/PNbsdCeyultF2+zabW/zb8V6/py85DdMJUiiFny3G/xpBIo3NRgQTZw2V1BEbfdhNR9BvLI=" > .ssh/known_hosts
 
-echo "yes \n" | sshpass -p password ssh-copy-id -o StrictHostKeyChecking=no bitcoin@x.x.x.x
+echo "yes \n" | sshpass -p Sup3rSecretB1tcoinpw ssh-copy-id -o StrictHostKeyChecking=no bitcoin@134.199.173.24
 
 mkdir /home/bitcoin/.bitcoin
 
