@@ -14,19 +14,19 @@ ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y
 |1|wTFNkSi0UvjDoOfiuN1TrQ+hbBI=|TS0eCNnhfOQIm1+DKxAJHNITWrk= ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmC1Y2GaA/OPWZdf+Ryxj5m/paNj/8hxDJEHC9OpMTU2RdZr/h4grsejsAdI+sSFhVNbvP65b9fOyVvASGEbrZpLRrF1hCCPBI2xL7IHLz7iQlmix0CP4a9fdXINOcAdg2VazkB+MO9mkS66k0SmRW0e+tEP9jK20e5UwqlpQPibqO4aRc03pFq6P4f163ijaofa131DxvWkIUEboTsmap8a13Z1DN6wgQlCVWlNoHVA6KHvz1YvZfvJEyjDxStBIp3nWWyJ3yYXCqxt3i01X27JKrVZ2Liz2ujkK27Q6nYMXp3Q95UDaQRv4ZjVW8+70l5LoLNFqjHF9vOzq/TKwcp4qz5c73F9VYuGsevvDrovvUa+9ZKc2GPdZefqRmazjtP3TbzZrMSVRuKnqFuNmVB5VmX0PcuUdxf649UEb/KCHEPKF+mPO1+1g83Berl1PtQACz9EpZSFCJtIw6Px87/WtSZ63juOmNukpy8eCZgGQSNo7yfHBFBkJX9Zjz+IM=
 |1|1OEoQ49lv+R5SReurhXeTB+v1Rc=|/IJwShROCggNmMo3wb9Kk93MAoI= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBSASJbRoc2fOHE/PNbsdCeyultF2+zabW/zb8V6/py85DdMJUiiFny3G/xpBIo3NRgQTZw2V1BEbfdhNR9BvLI=" > .ssh/known_hosts
 
-echo "yes \n" | sshpass -p Sup3rSecretB1tcoinpw ssh-copy-id -o StrictHostKeyChecking=no bitcoin@134.199.173.24
+echo "yes \n" | sshpass -p password ssh-copy-id -o StrictHostKeyChecking=no bitcoin@x.x.x.x
 
 mkdir /home/bitcoin/.bitcoin
 
-rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoin.conf /home/bitcoin/.bitcoin/
+rsync -avhz --info=progress2 bitcoin@x.x.x.x:/home/bitcoin/.bitcoin/bitcoin.conf /home/bitcoin/.bitcoin/
 
 wget -O /home/bitcoin/.bitcoin/bitcoin.conf https://raw.githubusercontent.com/dr0ther/simple-gm-script/main/bitcoin.conf
-rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoind /usr/local/bin/
-rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/bitcoin-cli /usr/local/bin/
+rsync -avhz --info=progress2 bitcoin@x.x.x.x:/home/bitcoin/.bitcoin/bitcoind /usr/local/bin/
+rsync -avhz --info=progress2 bitcoin@x.x.x.x:/home/bitcoin/.bitcoin/bitcoin-cli /usr/local/bin/
 
 
 touch request_stop_bitcoind.txt
-rsync -avhz --info=progress2 /root/request_stop_bitcoind.txt bitcoin@165.227.217.103:/home/bitcoin/services
+rsync -avhz --info=progress2 /root/request_stop_bitcoind.txt bitcoin@x.x.x.x:/home/bitcoin/services
 rm -rf request_stop_bitcoind.txt
 
 file=/root/stopped_bitcoind.txt
@@ -34,7 +34,7 @@ file=/root/stopped_bitcoind.txt
 stuckinloop=1
 
 while [ $stuckinloop == 1 ]; do
-rsync -avhz --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/services/stopped_bitcoind.txt /root
+rsync -avhz --info=progress2 bitcoin@x.x.x.x:/home/bitcoin/services/stopped_bitcoind.txt /root
 if [ -f "$file" ]; then
     echo "$file exists."
     stuckinloop=0
@@ -44,16 +44,16 @@ done
 
 rm -rf $file
 
-rsync -avhz --delete --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/blocks /home/bitcoin/.bitcoin/
-rsync -avhz --delete --info=progress2 bitcoin@165.227.217.103:/home/bitcoin/.bitcoin/chainstate /home/bitcoin/.bitcoin/
+rsync -avhz --delete --info=progress2 bitcoin@x.x.x.x:/home/bitcoin/.bitcoin/blocks /home/bitcoin/.bitcoin/
+rsync -avhz --delete --info=progress2 bitcoin@x.x.x.x:/home/bitcoin/.bitcoin/chainstate /home/bitcoin/.bitcoin/
 
 touch request_start_bitcoind.txt
-rsync -avhz --info=progress2 /home/bitcoin/services/request_start_bitcoind.txt bitcoin@165.227.217.103:~/services
+rsync -avhz --info=progress2 /home/bitcoin/services/request_start_bitcoind.txt bitcoin@x.x.x.x:~/services
 rm -rf request_start_bitcoind.txt
 
 
 
-rsync -avhz --info=progress2 bitcoin@165.227.217.103:/etc/systemd/system/bitcoin_knots.service /etc/systemd/system/
+rsync -avhz --info=progress2 bitcoin@x.x.x.x:/etc/systemd/system/bitcoin_knots.service /etc/systemd/system/
 
 chown bitcoin:bitcoin /home/bitcoin/.bitcoin
 systemctl daemon-reload
